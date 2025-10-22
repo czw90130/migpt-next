@@ -4,6 +4,55 @@
 
 让人人都可以轻松定制自己的小爱音箱回复，让小爱音箱「听你的」。
 
+## 本地开发运行
+
+如果你想要二次开发或本地调试运行，可以按照以下步骤操作：
+
+### 1. 克隆仓库并安装依赖
+
+```shell
+git clone https://github.com/idootop/migpt-next.git
+cd migpt-next
+pnpm install
+```
+
+### 2. 配置文件
+
+首次运行需要创建配置文件：
+
+```shell
+# 复制配置模板
+cp config/config.example.js config/config.js
+
+# 编辑配置文件，填入你的小米账号和 AI 服务信息
+# 注意：config/config.js 已被 .gitignore 忽略，不会被提交到 git
+```
+
+配置说明请参考 [完整的参数配置](apps/next/README.md)。
+
+### 3. 构建项目
+
+```shell
+pnpm build
+```
+
+### 4. 启动服务
+
+```shell
+pnpm start
+```
+
+服务启动后会持续运行，监听小爱音箱的消息并进行回复。
+
+### 网络环境说明
+
+**本服务只需要能访问互联网即可，不需要公网IP**。服务通过小米云服务的 API（account.xiaomi.com、api.mina.mi.com 等）与小爱音箱通信，是客户端模式而非服务器模式。因此：
+
+- ✅ 可以在局域网内运行（家庭路由器、内网服务器）
+- ✅ 可以在 NAT 后面运行（无需端口映射）
+- ✅ 只需要出站网络访问权限
+- ❌ 不需要公网 IP 或域名
+
 ## Docker 运行
 
 [![Docker Image Version](https://img.shields.io/docker/v/idootop/migpt-next?color=%23086DCD&label=docker%20image)](https://hub.docker.com/r/idootop/migpt-next)

@@ -30,21 +30,8 @@ importers:
   apps/example:
     dependencies:
       '@mi-gpt/next':
-        specifier: 1.2.1
-        version: 1.2.1
-    devDependencies:
-      '@mi-gpt/config':
-        specifier: 1.1.0
-        version: 1.1.0
-      '@types/node':
-        specifier: ^22.14.0
-        version: 22.14.0
-      tsx:
-        specifier: ^4.19.3
-        version: 4.19.3
-      typescript:
-        specifier: ^5.8.2
-        version: 5.8.2
+        specifier: ^1.3.2
+        version: 1.3.2
 
   apps/next:
     dependencies:
@@ -245,24 +232,28 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-arm64@1.9.4':
     resolution: {integrity: sha512-fJIW0+LYujdjUgJJuwesP4EjIBl/N/TcOX3IvIHJQNsAqvV2CHIogsmA94BPG6jZATS4Hi+xv4SkBBQSt1N4/g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-x64-musl@1.9.4':
     resolution: {integrity: sha512-gEhi/jSBhZ2m6wjV530Yy8+fNqG8PAinM3oV7CyO+6c3CEh16Eizm21uHVsyVBEB6RIM8JHIl6AGYCv6Q6Q9Tg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-x64@1.9.4':
     resolution: {integrity: sha512-lRCJv/Vi3Vlwmbd6K+oQ0KhLHMAysN8lXoCI7XeHlxaajk06u7G+UsFSO01NAs5iYuWKmVZjmiOzJ0OJmGsMwg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-win32-arm64@1.9.4':
     resolution: {integrity: sha512-tlbhLk+WXZmgwoIKwHIHEBZUwxml7bRJgk0X2sPyNR3S93cdRq6XulAZRQJ17FYGGzWne0fgrXBKpl7l4M87Hg==}
@@ -513,20 +504,16 @@ packages:
     resolution: {integrity: sha512-C5b498nGC1ZAg6/Nl5XWneOwnUQ9CgK+0wCEqNDHYkj96YWqpbW3uGS6ubgNncpVMg/uXMoc55l1hsUF0lz+oQ==}
     engines: {node: '>=16'}
 
-  '@mi-gpt/config@1.1.0':
-    resolution: {integrity: sha512-o24iFINsoDuvInnMpfBQ4zCuTObbdodjXyizXmxl3yyYOMjmIAXizO/1UZ9/dv3UVTov3sjL09aCGuBeIVhvtA==}
-    engines: {node: '>=16'}
-
   '@mi-gpt/engine@1.2.1':
     resolution: {integrity: sha512-EmBVS/l1xj8N54ZHRmYcV0jl9vh0QBPsyMdjwmS5h9+cdG40ItUq+shVg9ZHJrwoixKIiagYJ4lAjw+yUQ1DUQ==}
     engines: {node: '>=16'}
 
-  '@mi-gpt/miot@1.1.1':
-    resolution: {integrity: sha512-KfpDeiui/gxEOO4mJ/apmedTyArbWr6a0tlCOlETlqk7lRGshhTeorgyA07Do1QDGWWkJ78WzeihuAZEWo8RRw==}
+  '@mi-gpt/miot@1.2.2':
+    resolution: {integrity: sha512-HM4jkfuorGdhSMSnzeaNtDh3yy5Njdo6FNJD3oqYZ4PEinJ41smvnADtnp2g/tM817owuWrm4vJDU6uHgeMAgQ==}
     engines: {node: '>=16'}
 
-  '@mi-gpt/next@1.2.1':
-    resolution: {integrity: sha512-x2Ij8oJy5ZsGRsvZTRLP7k8pFwUKZzqzxPgd8XTLKgAMYpFi70x2NfQ0OMOeXor8pkOFjJq4pJ2zTmRCMa3dzg==}
+  '@mi-gpt/next@1.3.2':
+    resolution: {integrity: sha512-xd2dClSzpCpQfjlJ9P1w1DNHI3v/19GgOUGbhuh3ICbctviMoGdLPvHJydk5mqkTsCjidm/P4wfhB4AAJRNccg==}
     engines: {node: '>=16'}
 
   '@mi-gpt/openai@1.1.1':
@@ -591,56 +578,67 @@ packages:
     resolution: {integrity: sha512-mz5POx5Zu58f2xAG5RaRRhp3IZDK7zXGk5sdEDj4o96HeaXhlUwmLFzNlc4hCQi5sGdR12VDgEUqVSHer0lI9g==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.39.0':
     resolution: {integrity: sha512-+YDwhM6gUAyakl0CD+bMFpdmwIoRDzZYaTWV3SDRBGkMU/VpIBYXXEvkEcTagw/7VVkL2vA29zU4UVy1mP0/Yw==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.39.0':
     resolution: {integrity: sha512-EKf7iF7aK36eEChvlgxGnk7pdJfzfQbNvGV/+l98iiMwU23MwvmV0Ty3pJ0p5WQfm3JRHOytSIqD9LB7Bq7xdQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.39.0':
     resolution: {integrity: sha512-vYanR6MtqC7Z2SNr8gzVnzUul09Wi1kZqJaek3KcIlI/wq5Xtq4ZPIZ0Mr/st/sv/NnaPwy/D4yXg5x0B3aUUA==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loongarch64-gnu@4.39.0':
     resolution: {integrity: sha512-NMRUT40+h0FBa5fb+cpxtZoGAggRem16ocVKIv5gDB5uLDgBIwrIsXlGqYbLwW8YyO3WVTk1FkFDjMETYlDqiw==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.39.0':
     resolution: {integrity: sha512-0pCNnmxgduJ3YRt+D+kJ6Ai/r+TaePu9ZLENl+ZDV/CdVczXl95CbIiwwswu4L+K7uOIGf6tMo2vm8uadRaICQ==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.39.0':
     resolution: {integrity: sha512-t7j5Zhr7S4bBtksT73bO6c3Qa2AV/HqiGlj9+KB3gNF5upcVkx+HLgxTm8DK4OkzsOYqbdqbLKwvGMhylJCPhQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.39.0':
     resolution: {integrity: sha512-m6cwI86IvQ7M93MQ2RF5SP8tUjD39Y7rjb1qjHgYh28uAPVU8+k/xYWvxRO3/tBN2pZkSMa5RjnPuUIbrwVxeA==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.39.0':
     resolution: {integrity: sha512-iRDJd2ebMunnk2rsSBYlsptCyuINvxUfGwOUldjv5M4tpa93K8tFMeYGpNk2+Nxl+OBJnBzy2/JCscGeO507kA==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.39.0':
     resolution: {integrity: sha512-t9jqYw27R6Lx0XKfEFe5vUeEJ5pF3SGIM6gTfONSMb7DuG6z6wfj2yjcoZxHg129veTqU7+wOhY6GX8wmf90dA==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.39.0':
     resolution: {integrity: sha512-ThFdkrFDP55AIsIZDKSBWEt/JcWlCzydbZHinZ0F/r1h83qbGeenCt/G/wG2O0reuENDD2tawfAj2s8VK7Bugg==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.39.0':
     resolution: {integrity: sha512-jDrLm6yUtbOg2TYB3sBF3acUnAwsIksEYjLeHL+TJv9jg+TmTwdyjnDex27jqEMakNKf3RwwPahDIt7QXCSqRQ==}
@@ -1907,8 +1905,6 @@ snapshots:
       - ws
       - zod
 
-  '@mi-gpt/config@1.1.0': {}
-
   '@mi-gpt/engine@1.2.1':
     dependencies:
       '@mi-gpt/chat': 1.1.1
@@ -1921,7 +1917,7 @@ snapshots:
       - ws
       - zod
 
-  '@mi-gpt/miot@1.1.1':
+  '@mi-gpt/miot@1.2.2':
     dependencies:
       '@mi-gpt/utils': 1.1.1
       axios: 1.8.4
@@ -1929,11 +1925,11 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@mi-gpt/next@1.2.1':
+  '@mi-gpt/next@1.3.2':
     dependencies:
       '@mi-gpt/chat': 1.1.1
       '@mi-gpt/engine': 1.2.1
-      '@mi-gpt/miot': 1.1.1
+      '@mi-gpt/miot': 1.2.2
       '@mi-gpt/utils': 1.1.1
     transitivePeerDependencies:
       - debug
@@ -2343,6 +2339,7 @@ snapshots:
   get-tsconfig@4.10.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
+    optional: true
 
   get-uri@6.0.4:
     dependencies:
@@ -2679,7 +2676,8 @@ snapshots:
 
   resolve-from@5.0.0: {}
 
-  resolve-pkg-maps@1.0.0: {}
+  resolve-pkg-maps@1.0.0:
+    optional: true
 
   reusify@1.1.0: {}
 
@@ -2859,6 +2857,7 @@ snapshots:
       get-tsconfig: 4.10.0
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   turbo-darwin-64@2.5.0:
     optional: true
