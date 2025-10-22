@@ -37,11 +37,29 @@ export type EngineConfig<E extends BaseEngine> = ChatConfig & {
    * 自定义消息处理钩子
    */
   onMessage?: (engine: E, msg: IMessage) => Promise<IReply | undefined>;
+  /**
+   * 是否启用"思考中"即时回复
+   *
+   * 当检测到 callAIKeywords 时，立即播放一个短语来打断小爱原回复
+   *
+   * @default true
+   */
+  enableThinkingResponse?: boolean;
+  /**
+   * "思考中"回复短语列表（不超过5个字）
+   *
+   * 会随机选择一个播放
+   *
+   * @default ['我想想', '思考中', '嗯...']
+   */
+  thinkingResponses?: string[];
 };
 
 const kDefaultConfig: EngineConfig<BaseEngine> = {
   debug: false,
   callAIKeywords: ['请', '你'],
+  enableThinkingResponse: true,
+  thinkingResponses: ['我想想', '思考中', '嗯...'],
 };
 
 export abstract class MiGPTEngine extends BaseEngine {
@@ -87,6 +105,15 @@ export abstract class MiGPTEngine extends BaseEngine {
     if (this.config.callAIKeywords?.some((k) => msg.text.startsWith(k))) {
       // 打断原来的小爱回复
       await this.speaker.abortXiaoAI();
+
+      // 立即播放"思考中"短语来打断小爱原回复
+      if (this.config.enableThinkingResponse && this.config.thinkingResponses?.length) {
+        const responses = this.config.thinkingResponses;
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        console.log(`💭 ${randomResponse}`);
+        // 不阻塞，立即播放后继续执行
+        this.speaker.play({ text: randomResponse, blocking: false });
+      }
 
       // 调用 AI 回答问题
       reply = await this.askAI(msg);
