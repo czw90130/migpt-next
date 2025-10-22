@@ -123,11 +123,23 @@ class _MiMessage {
       );
     }
     return records.map((e) => {
+      // 提取小爱的原始回复
+      let xiaoaiReply: string | undefined;
+      const firstAnswer = e.answers[0];
+      if (firstAnswer) {
+        if (firstAnswer.type === 'LLM') {
+          xiaoaiReply = firstAnswer.llm?.text;
+        } else if (firstAnswer.type === 'TTS') {
+          xiaoaiReply = firstAnswer.tts?.text;
+        }
+      }
+
       return {
         id: randomUUID(),
         sender: 'user',
         text: e.query,
         timestamp: e.time,
+        xiaoaiReply,
       };
     });
   }

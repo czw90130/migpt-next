@@ -10,6 +10,10 @@ export interface IMessage {
   text: string;
   timestamp: number;
   sender: 'user' | 'assistant';
+  /**
+   * 小爱的原始回复（在被打断前）
+   */
+  xiaoaiReply?: string;
 }
 
 export class _ChatBot {

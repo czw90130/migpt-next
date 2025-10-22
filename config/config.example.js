@@ -54,7 +54,8 @@ export default {
     /**
      * 系统提示词，如需关闭可设置为：''（空字符串）
      */
-    system: '你是一个智能助手，请根据用户的问题给出回答。',
+    system:
+      '你是一个智能助手，请根据用户的问题给出回答，注意你的返回需要转化为 TTL 语音的可口述内容，不能使用MD等格式或颜文字。',
   },
   context: {
     /**
@@ -72,13 +73,20 @@ export default {
   /**
    * 自定义消息回复
    */
-  async onMessage(engine, { text }) {
+  async onMessage(engine, { text, xiaoaiReply }) {
+    // xiaoaiReply 包含小爱的原始回复，可用于构建复杂多轮对话
     if (text === '测试播放文字') {
-      return { text: '你好，很高兴认识你！' };
+      return { text: `你好，很高兴认识你！小爱刚才说："${xiaoaiReply}"` };
     }
 
     if (text === '测试播放音乐') {
       return { url: 'https://example.com/hello.mp3' };
+    }
+
+    // 使用小爱的回复构建多轮对话
+    if (text.includes('继续') && xiaoaiReply) {
+      // 基于小爱的回复继续对话
+      return { text: `你刚才说"${xiaoaiReply}"，让我详细解释一下...` };
     }
 
     if (text === '测试其他能力') {

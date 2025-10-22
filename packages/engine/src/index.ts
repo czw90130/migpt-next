@@ -87,6 +87,11 @@ export abstract class MiGPTEngine extends BaseEngine {
   async onMessage(msg: IMessage) {
     console.log(`🔥 ${msg.text}`);
 
+    // 打印小爱的原始回复（如果有）
+    if (msg.xiaoaiReply) {
+      console.log(`🤖 小爱回复：${msg.xiaoaiReply}`);
+    }
+
     OpenAI.cancel(this.lastMsg?.id);
 
     this.lastMsg = msg;
